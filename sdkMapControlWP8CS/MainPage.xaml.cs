@@ -10,20 +10,27 @@
   
 */
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Windows;
-using Microsoft.Phone.Shell;
-using Microsoft.Phone.Controls;
-using sdkMapControlWP8CS.Resources;
-using Microsoft.Phone.Maps;
-using Microsoft.Phone.Maps.Controls;
-using System.Device.Location; // Provides the GeoCoordinate class.
-using Windows.Devices.Geolocation; //Provides the Geocoordinate class.
-using System.Windows.Shapes;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using Microsoft.Phone.Controls;
+using System.Device.Location;
+using Microsoft.Phone.Controls.Maps;
+using System.Windows.Media.Imaging;
+using System.Windows.Controls.Primitives;
+using System.ComponentModel;
+using Microsoft.Phone.Maps;
 using WebScraper;
-using Microsoft.Phone.Maps.Services;
-using Microsoft.Phone.Maps.Toolkit;
-using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
+using Microsoft.Phone.Shell;
+using sdkMapControlWP8CS.Resources;
 
 
 namespace sdkMapControlWP8CS
@@ -70,7 +77,7 @@ namespace sdkMapControlWP8CS
             }
             else
             {
-                myMap.Layers.Remove(locationLayer);
+                //myMap.Layers.Remove(locationLayer);
                 locationLayer = null;
                 locationToggleStatus = ToggleStatus.ToggledOff;
             }
@@ -101,13 +108,12 @@ namespace sdkMapControlWP8CS
             {
                 Geocoder geo = new Geocoder();
                 var coordinates = await geo.GetCoordinates(merchant.Location);
-                Pushpin pin = new Pushpin { GeoCoordinate = new GeoCoordinate(coordinates.Latitude, coordinates.Longitude) };
-
-
-                Pushpin pushpin = (Pushpin)this.FindName("MyPushpin");
+                Pushpin pushpin = new Pushpin ();
+                pushpin.Location = new GeoCoordinate(coordinates.Latitude, coordinates.Longitude);
+                pushpin.Background = new SolidColorBrush(Colors.Black);
                 pushpin.Content = merchant.Name;
-                pushpin.GeoCoordinate = new GeoCoordinate(coordinates.Latitude, coordinates.Longitude);
-
+                pushpin.Tag = merchant.Name;
+                myMap.Children.Add(pushpin);
             }
         }
 
@@ -128,8 +134,43 @@ namespace sdkMapControlWP8CS
                     timeout: TimeSpan.FromSeconds(10)
                     );
 
-                UserLocationMarker marker = (UserLocationMarker)this.FindName("UserLocationMarker");
-                marker.GeoCoordinate = new GeoCoordinate { Longitude = geoposition.Coordinate.Point.Position.Longitude, Latitude = geoposition.Coordinate.Point.Position.Latitude };
+                this.myMap.Center = new GeoCoordinate(geoposition.Coordinate.Point.Position.Latitude, geoposition.Coordinate.Point.Position.Longitude);
+
+                if (this.myMap.Children.Count != 0)
+                {
+                    var pushpin = myMap.Children.FirstOrDefault(p => (p.GetType() == typeof(Pushpin) && ((Pushpin)p).Tag == "locationPushpin"));
+
+                    if (pushpin != null)
+                    {
+                        this.myMap.Children.Remove(pushpin);
+                    }
+                }
+
+                Pushpin locationPushpin = new Pushpin();
+                //locationPushpin.Style = this.Resources["PushpinStyle"] as Style;
+                // locationPushpin.Template = this.Resources["PinTemplate"] as ControlTemplate;
+                //  locationPushpin.Template = this.Resources["ImagePin"] as ControlTemplate;
+
+
+                //Uri imgUri = new Uri("Images/MapPin2.png", UriKind.RelativeOrAbsolute);
+                //BitmapImage imgSourceR = new BitmapImage(imgUri);
+                //ImageBrush imgBrush = new ImageBrush() { ImageSource = imgSourceR };
+
+                //locationPushpin.Content = new Rectangle()
+                //{
+                //    Fill = imgBrush,
+                //    Height = 64,
+                //    Width = 64
+                //};
+
+                locationPushpin.Background = new SolidColorBrush(Colors.Purple);
+                locationPushpin.Content = "You are here";
+                locationPushpin.Tag = "locationPushpin";
+                locationPushpin.Location = new GeoCoordinate(geoposition.Coordinate.Point.Position.Latitude, geoposition.Coordinate.Point.Position.Longitude);
+                this.myMap.Children.Add(locationPushpin);
+                this.myMap.SetView(locationPushpin.Location, 18.0);
+                //UserLocationMarker marker = (UserLocationMarker)this.FindName("UserLocationMarker");
+                //marker.GeoCoordinate = new GeoCoordinate { Longitude = geoposition.Coordinate.Point.Position.Longitude, Latitude = geoposition.Coordinate.Point.Position.Latitude };
             }
             catch (Exception)
             {

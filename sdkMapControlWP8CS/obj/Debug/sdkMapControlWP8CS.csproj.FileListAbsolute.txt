@@ -114,11 +114,3 @@ F:\Downloads\Simple Map control sample\C#\sdkMapControlWP8CS\obj\Debug\XapCacheF
 F:\Downloads\Simple Map control sample\C#\sdkMapControlWP8CS\Bin\Debug\SmallShopsUnitedScraper.pdb
 F:\Downloads\Simple Map control sample\C#\sdkMapControlWP8CS\obj\Debug\sdkMapControlWP8CS.csprojResolveAssemblyReference.cache
 F:\Downloads\Simple Map control sample\C#\sdkMapControlWP8CS\Bin\Debug\Microsoft.Phone.Controls.Maps.dll
-F:\Downloads\Simple Map control sample\C#\sdkMapControlWP8CS\obj\Debug\System.Xml.XPath\layout.resfiles
-F:\Downloads\Simple Map control sample\C#\sdkMapControlWP8CS\obj\Debug\System.Xml.XPath\layout.resfiles.intermediate
-F:\Downloads\Simple Map control sample\C#\sdkMapControlWP8CS\obj\Debug\System.Xml.XPath\Resources.resfiles
-F:\Downloads\Simple Map control sample\C#\sdkMapControlWP8CS\obj\Debug\System.Xml.XPath\Resources.resfiles.intermediate
-F:\Downloads\Simple Map control sample\C#\sdkMapControlWP8CS\obj\Debug\System.Xml.XPath\pri.resfiles
-F:\Downloads\Simple Map control sample\C#\sdkMapControlWP8CS\obj\Debug\System.Xml.XPath\pri.resfiles.intermediate
-F:\Downloads\Simple Map control sample\C#\sdkMapControlWP8CS\obj\Debug\System.Xml.XPath\priconfig.xml
-F:\Downloads\Simple Map control sample\C#\sdkMapControlWP8CS\obj\Debug\System.Xml.XPath\priconfig.xml.intermediate

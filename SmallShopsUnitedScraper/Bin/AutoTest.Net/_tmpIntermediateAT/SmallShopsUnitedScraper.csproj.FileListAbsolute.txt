@@ -1,0 +1,5 @@
+F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\bin\AutoTest.Net\_tmpIntermediateAT\SmallShopsUnitedScraper.dll
+F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\bin\AutoTest.Net\_tmpIntermediateAT\SmallShopsUnitedScraper.pdb
+F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\bin\AutoTest.Net\SmallShopsUnitedScraper.dll
+F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\bin\AutoTest.Net\SmallShopsUnitedScraper.pdb
+F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\bin\AutoTest.Net\_tmpIntermediateAT\SmallShopsUnitedScraper.csprojResolveAssemblyReference.cache

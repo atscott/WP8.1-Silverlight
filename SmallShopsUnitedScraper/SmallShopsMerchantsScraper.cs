@@ -163,6 +163,7 @@ namespace SmallShopsUnitedScraper
 
                 return link;
             }
+            return "";
         }
 
 

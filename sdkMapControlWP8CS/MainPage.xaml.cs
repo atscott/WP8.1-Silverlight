@@ -18,27 +18,23 @@ using Microsoft.Phone.Maps;
 using Microsoft.Phone.Maps.Controls;
 using System.Device.Location; // Provides the GeoCoordinate class.
 using Windows.Devices.Geolocation; //Provides the Geocoordinate class.
-using System.Windows.Shapes;
-using System.Windows.Media;
 using SmallShopsUnitedScraper;
 using WebScraper;
-using Microsoft.Phone.Maps.Services;
 using Microsoft.Phone.Maps.Toolkit;
-using System.Threading.Tasks;
 
 
 namespace sdkMapControlWP8CS
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        const int MIN_ZOOM_LEVEL = 1;
-        const int MAX_ZOOM_LEVEL = 20;
-        const int MIN_ZOOMLEVEL_FOR_LANDMARKS = 16;
+        const int MinZoomLevel = 1;
+        const int MaxZoomLevel = 20;
+        const int MinZoomlevelForLandmarks = 16;
 
-        ToggleStatus locationToggleStatus = ToggleStatus.ToggledOff;
+        ToggleStatus _locationToggleStatus = ToggleStatus.ToggledOff;
 
-        MapLayer locationLayer = null;
-        MapLayer pushpinLayer = null;
+        MapLayer _locationLayer;
+        MapLayer _pushpinLayer;
 
         // Constructor.
         public MainPage()
@@ -64,16 +60,16 @@ namespace sdkMapControlWP8CS
 
         void ToggleLocation(object sender, EventArgs e)
         {
-            if (locationToggleStatus == ToggleStatus.ToggledOff)
+            if (_locationToggleStatus == ToggleStatus.ToggledOff)
             {
                 UpdateCurrentLocation();
-                locationToggleStatus = ToggleStatus.ToggledOn;
+                _locationToggleStatus = ToggleStatus.ToggledOn;
             }
             else
             {
-                myMap.Layers.Remove(locationLayer);
-                locationLayer = null;
-                locationToggleStatus = ToggleStatus.ToggledOff;
+                myMap.Layers.Remove(_locationLayer);
+                _locationLayer = null;
+                _locationToggleStatus = ToggleStatus.ToggledOff;
             }
 
         }
@@ -81,7 +77,7 @@ namespace sdkMapControlWP8CS
 
         void ZoomIn(object sender, EventArgs e)
         {
-            if (myMap.ZoomLevel < MAX_ZOOM_LEVEL)
+            if (myMap.ZoomLevel < MaxZoomLevel)
             {
                 myMap.ZoomLevel++;
             }
@@ -89,7 +85,7 @@ namespace sdkMapControlWP8CS
 
         void ZoomOut(object sender, EventArgs e)
         {
-            if (myMap.ZoomLevel > MIN_ZOOM_LEVEL)
+            if (myMap.ZoomLevel > MinZoomLevel)
             {
                 myMap.ZoomLevel--;
             }
@@ -98,17 +94,33 @@ namespace sdkMapControlWP8CS
         async void GetMerchants(object sender, EventArgs e)
         {
             var merchants = await SmallShopsMerchantsScraper.GetMerchants();
+            if (_pushpinLayer == null)
+            {
+                _pushpinLayer = new MapLayer();
+                myMap.Layers.Add(_pushpinLayer);
+            }
             foreach (var merchant in merchants)
             {
-                Geocoder geo = new Geocoder();
+                var geo = new Geocoder();
                 var coordinates = await geo.GetCoordinates(merchant.Location);
-                Pushpin pin = new Pushpin { GeoCoordinate = new GeoCoordinate(coordinates.Latitude, coordinates.Longitude) };
 
+                if (FindName(merchant.Name + coordinates.Latitude + coordinates.Longitude) != null) continue;
 
-                Pushpin pushpin = (Pushpin)this.FindName("MyPushpin");
-                pushpin.Content = merchant.Name;
-                pushpin.GeoCoordinate = new GeoCoordinate(coordinates.Latitude, coordinates.Longitude);
+                var pin = new Pushpin
+                {
+                    GeoCoordinate = new GeoCoordinate(coordinates.Latitude, coordinates.Longitude),
+                    Name = merchant.Name + coordinates.Latitude + coordinates.Longitude,
+                    Content = merchant.Name
+                };
 
+                var overlay = new MapOverlay
+                {
+                    Content = pin,
+                    PositionOrigin = new Point(0.0, 1.0),
+                    GeoCoordinate = new GeoCoordinate(coordinates.Latitude, coordinates.Longitude)
+                };
+
+                _pushpinLayer.Add(overlay);
             }
         }
 
@@ -119,18 +131,17 @@ namespace sdkMapControlWP8CS
 
         private async void UpdateCurrentLocation()
         {
-            Geolocator geolocator = new Geolocator();
-            geolocator.DesiredAccuracyInMeters = 50;
+            var geolocator = new Geolocator { DesiredAccuracyInMeters = 50 };
 
             try
             {
-                Geoposition geoposition = await geolocator.GetGeopositionAsync(
-                    maximumAge: TimeSpan.FromMinutes(5),
-                    timeout: TimeSpan.FromSeconds(10)
-                    );
+                var geoposition = await geolocator.GetGeopositionAsync(TimeSpan.FromMinutes(5), TimeSpan.FromSeconds(10));
 
-                UserLocationMarker marker = (UserLocationMarker)this.FindName("UserLocationMarker");
+                var marker = (UserLocationMarker)FindName("UserLocationMarker");
                 marker.GeoCoordinate = new GeoCoordinate { Longitude = geoposition.Coordinate.Point.Position.Longitude, Latitude = geoposition.Coordinate.Point.Position.Latitude };
+                var pushpin = (Pushpin)FindName("MyPushpin");
+                pushpin.Content = "My Location";
+                pushpin.GeoCoordinate = marker.GeoCoordinate;
             }
             catch (Exception)
             {
@@ -143,34 +154,41 @@ namespace sdkMapControlWP8CS
         private void BuildLocalizedApplicationBar()
         {
             // Set the page's ApplicationBar to a new instance of ApplicationBar.
-            ApplicationBar = new ApplicationBar();
-            ApplicationBar.Opacity = 0.5;
+            ApplicationBar = new ApplicationBar { Opacity = 0.5 };
 
             // Create buttons with localized strings from AppResources.
             // Toggle Location button.
-            ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/location.png", UriKind.Relative));
-            appBarButton.Text = AppResources.AppBarToggleLocationButtonText;
+            var appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/location.png", UriKind.Relative))
+            {
+                Text = AppResources.AppBarToggleLocationButtonText
+            };
             appBarButton.Click += ToggleLocation;
             ApplicationBar.Buttons.Add(appBarButton);
             // Merchants button
-            appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/landmarks.png", UriKind.Relative));
-            appBarButton.Text = AppResources.AppBarZoomInButtonText;
+            appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/landmarks.png", UriKind.Relative))
+            {
+                Text = AppResources.AppBarZoomInButtonText
+            };
             appBarButton.Click += GetMerchants;
             ApplicationBar.Buttons.Add(appBarButton);
             // Zoom In button.
-            appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/zoomin.png", UriKind.Relative));
-            appBarButton.Text = AppResources.AppBarZoomInButtonText;
+            appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/zoomin.png", UriKind.Relative))
+            {
+                Text = AppResources.AppBarZoomInButtonText
+            };
             appBarButton.Click += ZoomIn;
             ApplicationBar.Buttons.Add(appBarButton);
             // Zoom Out button.
-            appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/zoomout.png", UriKind.Relative));
-            appBarButton.Text = AppResources.AppBarZoomOutButtonText;
+            appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/zoomout.png", UriKind.Relative))
+            {
+                Text = AppResources.AppBarZoomOutButtonText
+            };
             appBarButton.Click += ZoomOut;
             ApplicationBar.Buttons.Add(appBarButton);
 
             // Create menu items with localized strings from AppResources.
             // Toggle Location menu item.
-            ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarToggleLocationMenuItemText);
+            var appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarToggleLocationMenuItemText);
             appBarMenuItem.Click += ToggleLocation;
             ApplicationBar.MenuItems.Add(appBarMenuItem);
 

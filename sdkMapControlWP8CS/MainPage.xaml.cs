@@ -20,6 +20,7 @@ using System.Device.Location; // Provides the GeoCoordinate class.
 using Windows.Devices.Geolocation; //Provides the Geocoordinate class.
 using System.Windows.Shapes;
 using System.Windows.Media;
+using SmallShopsUnitedScraper;
 using WebScraper;
 using Microsoft.Phone.Maps.Services;
 using Microsoft.Phone.Maps.Toolkit;

@@ -1,2 +1,2 @@
-F:\Downloads\Simple Map control sample\C#\sdkMapControlWP8CS\sdkMapControlWP8CS.csproj;neutral
-F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\SmallShopsUnitedScraper.csproj;neutral
+F:\Projects\WP8.1-Silverlight\sdkMapControlWP8CS\sdkMapControlWP8CS.csproj;neutral
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\SmallShopsUnitedScraper.csproj;neutral

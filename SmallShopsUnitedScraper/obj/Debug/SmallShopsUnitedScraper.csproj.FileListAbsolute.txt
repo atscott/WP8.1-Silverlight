@@ -17,3 +17,22 @@ F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\obj\Debug\Smal
 F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\obj\Debug\SmallShopsUnitedScraper.pdb
 F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\Bin\Debug\SmallShopsUnitedScraper.pdb
 F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\obj\Debug\SmallShopsUnitedScraper.csprojResolveAssemblyReference.cache
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\obj\Debug\SmallShopsUnitedScraper.csprojResolveAssemblyReference.cache
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\SmallShopsUnitedScraper.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\SmallShopsUnitedScraper.pdb
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\HtmlAgilityPack.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\System.Xml.XPath.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\HtmlAgilityPack.pdb
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\HtmlAgilityPack.xml
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\System.Xml.XPath.xml
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\de\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\es\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\fr\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\it\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\ja\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\ko\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\ru\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\zh-Hans\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\Bin\Debug\zh-Hant\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\obj\Debug\SmallShopsUnitedScraper.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\obj\Debug\SmallShopsUnitedScraper.pdb

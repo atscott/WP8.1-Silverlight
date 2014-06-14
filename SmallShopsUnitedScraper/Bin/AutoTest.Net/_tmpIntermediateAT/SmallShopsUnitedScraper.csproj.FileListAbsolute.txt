@@ -3,3 +3,22 @@ F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\bin\AutoTest.N
 F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\bin\AutoTest.Net\SmallShopsUnitedScraper.dll
 F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\bin\AutoTest.Net\SmallShopsUnitedScraper.pdb
 F:\Downloads\Simple Map control sample\C#\SmallShopsUnitedScraper\bin\AutoTest.Net\_tmpIntermediateAT\SmallShopsUnitedScraper.csprojResolveAssemblyReference.cache
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\_tmpIntermediateAT\SmallShopsUnitedScraper.csprojResolveAssemblyReference.cache
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\_tmpIntermediateAT\SmallShopsUnitedScraper.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\_tmpIntermediateAT\SmallShopsUnitedScraper.pdb
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\SmallShopsUnitedScraper.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\SmallShopsUnitedScraper.pdb
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\HtmlAgilityPack.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\System.Xml.XPath.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\HtmlAgilityPack.pdb
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\HtmlAgilityPack.xml
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\System.Xml.XPath.xml
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\de\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\es\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\fr\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\it\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\ja\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\ko\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\ru\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\zh-Hans\System.Xml.XPath.resources.dll
+F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\bin\AutoTest.Net\zh-Hant\System.Xml.XPath.resources.dll

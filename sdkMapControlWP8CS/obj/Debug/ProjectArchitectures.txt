@@ -1,2 +1,0 @@
-F:\Projects\WP8.1-Silverlight\sdkMapControlWP8CS\sdkMapControlWP8CS.csproj;neutral
-F:\Projects\WP8.1-Silverlight\SmallShopsUnitedScraper\SmallShopsUnitedScraper.csproj;neutral

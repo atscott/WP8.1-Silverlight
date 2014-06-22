@@ -107,7 +107,8 @@ namespace sdkMapControlWP8CS
                 var geoposition = await geolocator.GetGeopositionAsync(TimeSpan.FromMinutes(5), TimeSpan.FromSeconds(10));
                 _locationLayer.Clear();
 
-                var coordinate = new GeoCoordinate(geoposition.Coordinate.Point.Position.Latitude,geoposition.Coordinate.Point.Position.Longitude)
+                var coordinate = new GeoCoordinate(geoposition.Coordinate.Point.Position.Latitude,
+                    geoposition.Coordinate.Point.Position.Longitude);
 
                 AddUserLocationMarkerToMap(coordinate);
 

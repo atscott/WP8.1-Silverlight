@@ -6,9 +6,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-using WebScraper;
 
-namespace SmallShopsUnitedScraper
+namespace SmallShopsUnitedDomainLayer
 {
     public class SmallShopsMerchantsScraper
     {
@@ -83,13 +82,14 @@ namespace SmallShopsUnitedScraper
             var rewardDescriptions = htmlNode.SelectNodes(htmlNode.XPath + "//strong");
             var allRewards = new List<Rewards>();
 
-            foreach (var t in rewardGroups)
+            for (var index = 0; index < rewardGroups.Count; index++)
             {
+                var rewardGroup = rewardGroups[index];
                 var rewards = new Rewards
                 {
-                    CategoryDescription = rewardDescriptions[0].InnerText
+                    CategoryDescription = rewardDescriptions[index].InnerText
                 };
-                foreach (var item in t.SelectNodes(t.XPath + "//li"))
+                foreach (var item in rewardGroup.SelectNodes(rewardGroup.XPath + "//li"))
                 {
                     rewards.Items.Add(item.InnerText);
                 }
@@ -98,10 +98,6 @@ namespace SmallShopsUnitedScraper
             return allRewards;
         }
 
-        private static IEnumerable<string> getRewardsFromUnorderedList(HtmlNode htmlNode)
-        {
-            return htmlNode.SelectNodes(htmlNode.XPath + "//li").Select(reward => reward.InnerText);
-        }
 
         private static string GetCategoryFromCell(HtmlNode htmlNode)
         {

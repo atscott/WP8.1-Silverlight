@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sdkMapControlWP8CS", "sdkMapControlWP8CS\sdkMapControlWP8CS.csproj", "{EC4853D3-A754-4CA5-ACCD-8A161BD72638}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallShopsUnitedScraper", "SmallShopsUnitedScraper\SmallShopsUnitedScraper.csproj", "{1DFD4B66-A2E1-47C5-8D19-FC07D059F02F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallShopsUnitedDomainLayer", "SmallShopsUnitedScraper\SmallShopsUnitedDomainLayer.csproj", "{1DFD4B66-A2E1-47C5-8D19-FC07D059F02F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebScraper.Tests", "WebScraper.Tests\WebScraper.Tests.csproj", "{7468992D-EF77-4540-A364-8D2D1B654D2A}"
 EndProject

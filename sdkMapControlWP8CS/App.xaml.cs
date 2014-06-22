@@ -20,7 +20,7 @@ using sdkMapControlWP8CS.Resources;
 
 namespace sdkMapControlWP8CS
 {
-    public partial class App : Application
+    public partial class App
     {
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -64,7 +64,6 @@ namespace sdkMapControlWP8CS
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
-
         }
 
         // Code to execute when the application is launching (eg, from Start)

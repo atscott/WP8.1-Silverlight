@@ -10,16 +10,17 @@
   
 */
 using System;
+using System.Collections.Generic;
 using System.Windows;
-using Microsoft.Phone.Shell;
+using System.Windows.Input;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 using sdkMapControlWP8CS.Resources;
 using Microsoft.Phone.Maps;
 using Microsoft.Phone.Maps.Controls;
 using System.Device.Location; // Provides the GeoCoordinate class.
 using Windows.Devices.Geolocation; //Provides the Geocoordinate class.
-using SmallShopsUnitedScraper;
-using WebScraper;
+using SmallShopsUnitedDomainLayer;
 using Microsoft.Phone.Maps.Toolkit;
 
 
@@ -48,6 +49,8 @@ namespace sdkMapControlWP8CS
             myMap.Layers.Add(_pushpinLayer);
             _locationLayer = new MapLayer();
             myMap.Layers.Add(_locationLayer);
+            var service = new MerchantService();
+            PlaceMerchantsOnMap(service.GetMerchants());
         }
 
         // Placeholder code to contain the ApplicationID and AuthenticationToken
@@ -78,24 +81,33 @@ namespace sdkMapControlWP8CS
 
         async void GetMerchants(object sender, EventArgs e)
         {
-            var merchants = await SmallShopsMerchantsScraper.GetMerchants();
+            var service = new MerchantService();
+            var merchants = await service.RefreshMerchants();
 
+            PlaceMerchantsOnMap(merchants);
+        }
+
+        private void PlaceMerchantsOnMap(IEnumerable<Merchant> merchants)
+        {
             foreach (var merchant in merchants)
             {
-                var geo = new Geocoder();
-                var coordinates = await geo.GetCoordinates(merchant.Location);
-
-                if (FindName(merchant.Name + coordinates.Latitude + coordinates.Longitude) != null) continue;
+                if (FindName(merchant.Name + merchant.LocationGeoposition.Latitude + merchant.LocationGeoposition.Longitude) != null) continue;
 
                 var pin = new Pushpin
                 {
-                    GeoCoordinate = new GeoCoordinate(coordinates.Latitude, coordinates.Longitude),
-                    Name = merchant.Name + coordinates.Latitude + coordinates.Longitude,
-                    Content = merchant.Name
+                    GeoCoordinate = new GeoCoordinate(merchant.LocationGeoposition.Latitude, merchant.LocationGeoposition.Longitude),
+                    Name = merchant.Name + merchant.LocationGeoposition.Latitude + merchant.LocationGeoposition.Longitude,
+                    Content = merchant
                 };
-
+                pin.MouseLeftButtonUp += GoToDetailsPageForMerchant;
                 AddItemToLayer(pin, _pushpinLayer);
             }
+        }
+
+        private void GoToDetailsPageForMerchant(object sender, MouseButtonEventArgs e)
+        {
+            var merchant = (Merchant)((Pushpin) sender).Content;
+            NavigationService.Navigate(new Uri("/Pages/MerchantDetails.xaml?name=" + merchant.Name, UriKind.Relative));
         }
 
         private async void UpdateCurrentLocation(object sender, EventArgs eventArgs)

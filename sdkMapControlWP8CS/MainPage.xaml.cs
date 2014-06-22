@@ -25,13 +25,10 @@ using Microsoft.Phone.Maps.Toolkit;
 
 namespace sdkMapControlWP8CS
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class MainPage
     {
-        const int MinZoomLevel = 1;
+        const int MinZoomLevel = 2;
         const int MaxZoomLevel = 20;
-        const int MinZoomlevelForLandmarks = 16;
-
-        ToggleStatus _locationToggleStatus = ToggleStatus.ToggledOff;
 
         MapLayer _locationLayer;
         MapLayer _pushpinLayer;
@@ -39,12 +36,18 @@ namespace sdkMapControlWP8CS
         // Constructor.
         public MainPage()
         {
-
             InitializeComponent();
-
             // Create the localized ApplicationBar.
             BuildLocalizedApplicationBar();
+            InitializeMapLayers();
+        }
 
+        private void InitializeMapLayers()
+        {
+            _pushpinLayer = new MapLayer();
+            myMap.Layers.Add(_pushpinLayer);
+            _locationLayer = new MapLayer();
+            myMap.Layers.Add(_locationLayer);
         }
 
         // Placeholder code to contain the ApplicationID and AuthenticationToken
@@ -54,24 +57,6 @@ namespace sdkMapControlWP8CS
         {
             MapsSettings.ApplicationContext.ApplicationId = "MyLocator";
             MapsSettings.ApplicationContext.AuthenticationToken = "Ah0lUhUorbBEefBM-h-Ozp7sHI0qp4TMvbR7rvqT_gxWDTM8aF0i-7Jj_37FwfUY";
-        }
-
-        #region Event handlers for App Bar buttons and menu items
-
-        void ToggleLocation(object sender, EventArgs e)
-        {
-            if (_locationToggleStatus == ToggleStatus.ToggledOff)
-            {
-                UpdateCurrentLocation();
-                _locationToggleStatus = ToggleStatus.ToggledOn;
-            }
-            else
-            {
-                myMap.Layers.Remove(_locationLayer);
-                _locationLayer = null;
-                _locationToggleStatus = ToggleStatus.ToggledOff;
-            }
-
         }
 
 
@@ -94,11 +79,7 @@ namespace sdkMapControlWP8CS
         async void GetMerchants(object sender, EventArgs e)
         {
             var merchants = await SmallShopsMerchantsScraper.GetMerchants();
-            if (_pushpinLayer == null)
-            {
-                _pushpinLayer = new MapLayer();
-                myMap.Layers.Add(_pushpinLayer);
-            }
+
             foreach (var merchant in merchants)
             {
                 var geo = new Geocoder();
@@ -113,42 +94,69 @@ namespace sdkMapControlWP8CS
                     Content = merchant.Name
                 };
 
-                var overlay = new MapOverlay
-                {
-                    Content = pin,
-                    PositionOrigin = new Point(0.0, 1.0),
-                    GeoCoordinate = new GeoCoordinate(coordinates.Latitude, coordinates.Longitude)
-                };
-
-                _pushpinLayer.Add(overlay);
+                AddItemToLayer(pin, _pushpinLayer);
             }
         }
 
-        #endregion
-
-        #region Helper functions for App Bar button and menu item event handlers
-
-
-        private async void UpdateCurrentLocation()
+        private async void UpdateCurrentLocation(object sender, EventArgs eventArgs)
         {
             var geolocator = new Geolocator { DesiredAccuracyInMeters = 50 };
 
             try
             {
                 var geoposition = await geolocator.GetGeopositionAsync(TimeSpan.FromMinutes(5), TimeSpan.FromSeconds(10));
+                _locationLayer.Clear();
 
-                var marker = (UserLocationMarker)FindName("UserLocationMarker");
-                marker.GeoCoordinate = new GeoCoordinate { Longitude = geoposition.Coordinate.Point.Position.Longitude, Latitude = geoposition.Coordinate.Point.Position.Latitude };
-                var pushpin = (Pushpin)FindName("MyPushpin");
-                pushpin.Content = "My Location";
-                pushpin.GeoCoordinate = marker.GeoCoordinate;
+                var coordinate = new GeoCoordinate(geoposition.Coordinate.Point.Position.Latitude,geoposition.Coordinate.Point.Position.Longitude)
+
+                AddUserLocationMarkerToMap(coordinate);
+
+                AddMyLocationPinToMap(coordinate);
+
+                myMap.Center = coordinate;
+                myMap.ZoomLevel = 15;
             }
             catch (Exception)
             {
                 MessageBox.Show("Error getting location");
             }
         }
-        #endregion
+
+        private void AddMyLocationPinToMap(GeoCoordinate coordinate)
+        {
+            var pushpin = (Pushpin) FindName("MyLocation") ?? new Pushpin
+            {
+                GeoCoordinate = coordinate,
+                Name = "MyLocation",
+                Content = "My Location"
+            };
+            pushpin.GeoCoordinate = coordinate;
+            AddItemToLayer(pushpin, _locationLayer);
+        }
+
+        private void AddUserLocationMarkerToMap(GeoCoordinate coordinate)
+        {
+            var marker = (UserLocationMarker)FindName("UserLocationMarker") ?? new UserLocationMarker();
+            marker.GeoCoordinate = coordinate;
+            AddItemToLayer(marker, _locationLayer, 0.5, 0.5);
+        }
+
+
+        public void AddItemToLayer(MapChildControl item, MapLayer layer)
+        {
+            AddItemToLayer(item, layer, 0.0, 1.0);
+        }
+
+        public void AddItemToLayer(MapChildControl item, MapLayer layer, double xOrigin, double yOrigin)
+        {
+            var overlay = new MapOverlay
+            {
+                Content = item,
+                PositionOrigin = new Point(xOrigin, yOrigin),
+                GeoCoordinate = item.GeoCoordinate
+            };
+            layer.Add(overlay);
+        }
 
         // Create the localized ApplicationBar.
         private void BuildLocalizedApplicationBar()
@@ -162,7 +170,7 @@ namespace sdkMapControlWP8CS
             {
                 Text = AppResources.AppBarToggleLocationButtonText
             };
-            appBarButton.Click += ToggleLocation;
+            appBarButton.Click += UpdateCurrentLocation;
             ApplicationBar.Buttons.Add(appBarButton);
             // Merchants button
             appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/landmarks.png", UriKind.Relative))
@@ -189,7 +197,7 @@ namespace sdkMapControlWP8CS
             // Create menu items with localized strings from AppResources.
             // Toggle Location menu item.
             var appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarToggleLocationMenuItemText);
-            appBarMenuItem.Click += ToggleLocation;
+            appBarMenuItem.Click += UpdateCurrentLocation;
             ApplicationBar.MenuItems.Add(appBarMenuItem);
 
             // Zoom In menu item.
@@ -202,10 +210,5 @@ namespace sdkMapControlWP8CS
             ApplicationBar.MenuItems.Add(appBarMenuItem);
         }
 
-        private enum ToggleStatus
-        {
-            ToggledOff,
-            ToggledOn
-        }
     }
 }

@@ -62,10 +62,6 @@
 
 
             <maps:Map x:Name="myMap">
-                <toolkit:MapExtensions.Children>
-                    <toolkit:UserLocationMarker x:Name="UserLocationMarker" />
-                    <toolkit:Pushpin x:Name="MyPushpin" Content="My Position"></toolkit:Pushpin>
-                </toolkit:MapExtensions.Children>
             </maps:Map>
         </Grid>
         <!--Uncomment to see an alignment grid to help ensure your controls are

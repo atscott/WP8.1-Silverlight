@@ -79,20 +79,20 @@ namespace sdkMapControlWP8CS.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to landmarks.
+        ///   Looks up a localized string similar to merchants.
         /// </summary>
-        public static string AppBarToggleLandmarksButtonText {
+        public static string AppBarMerchantsButtonText {
             get {
-                return ResourceManager.GetString("AppBarToggleLandmarksButtonText", resourceCulture);
+                return ResourceManager.GetString("AppBarMerchantsButtonText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to toggle landmarks.
+        ///   Looks up a localized string similar to refresh merchants.
         /// </summary>
-        public static string AppBarToggleLandmarksMenuItemText {
+        public static string AppBarMerchantsMenuItemText {
             get {
-                return ResourceManager.GetString("AppBarToggleLandmarksMenuItemText", resourceCulture);
+                return ResourceManager.GetString("AppBarMerchantsMenuItemText", resourceCulture);
             }
         }
         

@@ -188,7 +188,7 @@ namespace sdkMapControlWP8CS
             // Merchants button
             appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/landmarks.png", UriKind.Relative))
             {
-                Text = AppResources.AppBarZoomInButtonText
+                Text = AppResources.AppBarMerchantsButtonText
             };
             appBarButton.Click += GetMerchants;
             ApplicationBar.Buttons.Add(appBarButton);
@@ -211,6 +211,12 @@ namespace sdkMapControlWP8CS
             // Toggle Location menu item.
             var appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarToggleLocationMenuItemText);
             appBarMenuItem.Click += UpdateCurrentLocation;
+            ApplicationBar.MenuItems.Add(appBarMenuItem);
+
+            // Create menu items with localized strings from AppResources.
+            // Toggle Location menu item.
+            appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMerchantsMenuItemText);
+            appBarMenuItem.Click += GetMerchants;
             ApplicationBar.MenuItems.Add(appBarMenuItem);
 
             // Zoom In menu item.

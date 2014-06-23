@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{ec4853d3-a754-4ca5-accd-8a161bd72638}" Title="sdkMapControlWP8CS" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="sdkMapControlWP8CS author" Description="Sample description" Publisher="sdkMapControlWP8CS" PublisherID="{78630bbb-268b-4d8e-a4e0-42285ca9697f}">
+  <App xmlns="" ProductID="{ec4853d3-a754-4ca5-accd-8a161bd72638}" Title="Small Shops United Merchants" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Andrew Scott" Description="Sample description" Publisher="Andrew Scott" PublisherID="{78630bbb-268b-4d8e-a4e0-42285ca9697f}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
@@ -21,14 +21,21 @@
           <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\IconicTileSmall.png</SmallImageURI>
           <Count>0</Count>
           <IconImageURI IsRelative="true" IsResource="false">Assets\Tiles\IconicTileMediumLarge.png</IconImageURI>
-          <Title></Title>
-          <Message></Message>
-          <BackgroundColor></BackgroundColor>
+          <Title>
+          </Title>
+          <Message>
+          </Message>
+          <BackgroundColor>
+          </BackgroundColor>
           <HasLarge>false</HasLarge>
-          <LargeContent1></LargeContent1>
-          <LargeContent2></LargeContent2>
-          <LargeContent3></LargeContent3>
-          <DeviceLockImageURI IsRelative="true" IsResource="false"></DeviceLockImageURI>
+          <LargeContent1>
+          </LargeContent1>
+          <LargeContent2>
+          </LargeContent2>
+          <LargeContent3>
+          </LargeContent3>
+          <DeviceLockImageURI IsRelative="true" IsResource="false">
+          </DeviceLockImageURI>
         </TemplateIconic>
       </PrimaryToken>
     </Tokens>

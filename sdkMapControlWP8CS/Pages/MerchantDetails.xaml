@@ -15,7 +15,7 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="#FFF59331">
+    <Grid x:Name="LayoutRoot" Background="#FFF0F0F0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -23,9 +23,8 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="Small Shops United Merchants" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <!--<TextBlock Text="Page Name" Name="MerchantName" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>-->
-            <c:OverflowTextBlock Margin="9,-7,0,0" x:Name="MerchantName" Text="[Merchant Name]" Style="{StaticResource PhoneTextTitle1Style}" />
+            <TextBlock Text="Small Shops United Merchants" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#FFFF9503"/>
+            <c:OverflowTextBlock Margin="9,-7,0,0" x:Name="MerchantName" Text="[Merchant Name]" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#FFFF9503" />
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
@@ -33,27 +32,28 @@
             <ScrollViewer VerticalAlignment="Top">
                 <StackPanel>
                     <StackPanel>
-                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Neighborhood:" VerticalAlignment="Top"  FontWeight="Bold" TextDecorations="Underline"/>
-                        <TextBlock x:Name="TxtNeighborhood" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" />
+                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Neighborhood:" VerticalAlignment="Top"  FontWeight="Bold" TextDecorations="Underline" Foreground="#FFFF9503"/>
+                        <TextBlock x:Name="TxtNeighborhood" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Foreground="Black" />
                     </StackPanel>
                     <StackPanel>
-                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Address:" VerticalAlignment="Top" FontWeight="Bold" TextDecorations="Underline"/>
-                        <TextBlock x:Name="TxtLocation" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-                    </StackPanel>                    <StackPanel>
-                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" FontWeight="Bold" TextDecorations="Underline"/>
-                        <TextBlock x:Name="TxtCategory" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" />
+                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Address:" VerticalAlignment="Top" FontWeight="Bold" TextDecorations="Underline" Foreground="#FFFF9503"/>
+                        <TextBlock x:Name="TxtLocation" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Foreground="Black"/>
                     </StackPanel>
                     <StackPanel>
-                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Rewards:" VerticalAlignment="Top" FontWeight="Bold" TextDecorations="Underline"/>
-                        <TextBlock x:Name="TxtRewards" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" />
+                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" FontWeight="Bold" TextDecorations="Underline" Foreground="#FFFF9503"/>
+                        <TextBlock x:Name="TxtCategory" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Foreground="Black" />
                     </StackPanel>
                     <StackPanel>
-                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Notes/Conditions:" VerticalAlignment="Top" FontWeight="Bold" TextDecorations="Underline"/>
-                        <TextBlock x:Name="TxtNotes" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" />
+                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Rewards:" VerticalAlignment="Top" FontWeight="Bold" TextDecorations="Underline" Foreground="#FFFF9503"/>
+                        <TextBlock x:Name="TxtRewards" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Black" />
                     </StackPanel>
                     <StackPanel>
-                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="More Info:" VerticalAlignment="Top"  FontWeight="Bold" TextDecorations="Underline"/>
-                        <HyperlinkButton Name="MoreInfoHyperlink" Click="MoreInfoHyperlink_OnClick" HorizontalContentAlignment="Left" />
+                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Notes/Conditions:" VerticalAlignment="Top" FontWeight="Bold" TextDecorations="Underline" Foreground="#FFFF9503"/>
+                        <TextBlock x:Name="TxtNotes" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Foreground="Black" />
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="More Info:" VerticalAlignment="Top"  FontWeight="Bold" TextDecorations="Underline" Foreground="#FFFF9503"/>
+                        <HyperlinkButton Name="MoreInfoHyperlink" Click="MoreInfoHyperlink_OnClick" HorizontalContentAlignment="Left" Foreground="Black" />
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>

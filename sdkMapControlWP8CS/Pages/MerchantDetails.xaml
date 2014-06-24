@@ -53,7 +53,7 @@
                     </StackPanel>
                     <StackPanel>
                         <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="More Info:" VerticalAlignment="Top"  FontWeight="Bold" TextDecorations="Underline" Foreground="#FFFF9503"/>
-                        <HyperlinkButton Name="MoreInfoHyperlink" Click="MoreInfoHyperlink_OnClick" HorizontalContentAlignment="Left" Foreground="Black" />
+                        <HyperlinkButton Name="MoreInfoHyperlink" Click="MoreInfoHyperlink_OnClick" HorizontalContentAlignment="Left" Foreground="#FF0033BB" />
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>

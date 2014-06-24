@@ -15,7 +15,7 @@ namespace SmallShopsUnitedDomainLayer
 
         public override string ToString()
         {
-            return Items.Aggregate(CategoryDescription + "\n", (current, item) => current + ("\t" + item + "\n"));
+            return Items.Aggregate(CategoryDescription + "\n", (current, item) => current + ("• " + item + "\n"));
         }
     }
 }

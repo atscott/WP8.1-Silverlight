@@ -71,7 +71,7 @@ namespace SmallShopsUnitedDomainLayer
             {
                 foreach (var reward in htmlNode.SelectNodes(htmlNode.XPath + "//p"))
                 {
-                    yield return reward.InnerText;
+                    yield return reward.InnerText.Replace("&nbsp;"," ").Replace("&#39;", "'");
                 }
             }
         }

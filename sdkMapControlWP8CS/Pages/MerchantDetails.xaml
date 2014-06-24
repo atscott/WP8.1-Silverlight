@@ -31,27 +31,30 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <ScrollViewer VerticalAlignment="Top">
-                <StackPanel >
-                    <Grid>
-                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Neighborhood:" VerticalAlignment="Top" Height="27" Width="135"/>
-                        <TextBlock x:Name="TxtNeighborhood" HorizontalAlignment="Left" Margin="150,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" />
-                    </Grid>
-                    <Grid>
-                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Address:" VerticalAlignment="Top"/>
-                        <TextBlock x:Name="TxtLocation" HorizontalAlignment="Left" Margin="95,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-                    </Grid>
-                    <Grid>
-                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top"/>
-                        <TextBlock x:Name="TxtCategory" HorizontalAlignment="Left" Margin="100,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" />
-                    </Grid>
-                    <Grid>
-                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Rewards:" VerticalAlignment="Top"/>
-                        <TextBlock x:Name="TxtRewards" HorizontalAlignment="Left" Margin="93,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" />
-                    </Grid>
-                    <Grid>
-                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Notes/Conditions:" VerticalAlignment="Top"/>
-                        <TextBlock x:Name="TxtNotes" HorizontalAlignment="Left" Margin="175,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" />
-                    </Grid>
+                <StackPanel>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Neighborhood:" VerticalAlignment="Top"  FontWeight="Bold" TextDecorations="Underline"/>
+                        <TextBlock x:Name="TxtNeighborhood" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" />
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Address:" VerticalAlignment="Top" FontWeight="Bold" TextDecorations="Underline"/>
+                        <TextBlock x:Name="TxtLocation" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+                    </StackPanel>                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" FontWeight="Bold" TextDecorations="Underline"/>
+                        <TextBlock x:Name="TxtCategory" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" />
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Rewards:" VerticalAlignment="Top" FontWeight="Bold" TextDecorations="Underline"/>
+                        <TextBlock x:Name="TxtRewards" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" />
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="Notes/Conditions:" VerticalAlignment="Top" FontWeight="Bold" TextDecorations="Underline"/>
+                        <TextBlock x:Name="TxtNotes" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" />
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Left"   Margin="10,10,0,0" TextWrapping="Wrap" Text="More Info:" VerticalAlignment="Top"  FontWeight="Bold" TextDecorations="Underline"/>
+                        <HyperlinkButton Name="MoreInfoHyperlink" Click="MoreInfoHyperlink_OnClick" HorizontalContentAlignment="Left" />
+                    </StackPanel>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

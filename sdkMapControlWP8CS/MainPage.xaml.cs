@@ -13,7 +13,6 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
-using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using sdkMapControlWP8CS.Resources;
 using Microsoft.Phone.Maps;

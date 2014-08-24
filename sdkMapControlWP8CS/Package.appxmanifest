@@ -8,7 +8,7 @@
   <mp:PhoneIdentity PhoneProductId="ec4853d3-a754-4ca5-accd-8a161bd72638" PhonePublisherId="78630bbb-268b-4d8e-a4e0-42285ca9697f"/>
 
   <Properties>
-    <DisplayName>sdkMapControlWP8CS</DisplayName>
+    <DisplayName>Small Shops United Merchants</DisplayName>
     <PublisherDisplayName>atscott</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -27,7 +27,7 @@
         Executable="AGHost.exe"
         EntryPoint="MainPage.xaml">
       <m3:VisualElements
-          DisplayName="sdkMapControlWP8CS"
+          DisplayName="Small Shops United Merchants"
           Square150x150Logo="Assets\SquareTile150x150.png"
           Square44x44Logo="Assets\Logo.png"
           Description="sdkMapControlWP8CS"

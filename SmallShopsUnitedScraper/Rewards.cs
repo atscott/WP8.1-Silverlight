@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace WebScraper
+namespace SmallShopsUnitedDomainLayer
 {
     public class Rewards
     {
@@ -14,6 +11,11 @@ namespace WebScraper
         public Rewards()
         {
             Items = new List<string>();
+        }
+
+        public override string ToString()
+        {
+            return Items.Aggregate(CategoryDescription + "\n", (current, item) => current + ("• " + item + "\n"));
         }
     }
 }
